@@ -1,0 +1,9 @@
+*.tmp
+*.swp
+*.rvmrc
+Gemfile.lock
+.DS_Store
+*.log
+log/
+tmp/
+
