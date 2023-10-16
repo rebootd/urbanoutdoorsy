@@ -22,7 +22,7 @@ jobs:
       - run: echo "starting deployment to host"
       - name: deploy to host
         run: |
-              sshpass -p '${{ secrets.HOSTING_PWD }}' rsync --exclude '*.md' --exclude '*.md' --exclude '.git' --exclude '.github' -r ./ ${{ secrets.HOSTING_USER }}@${{ secrets.HOSTING_IP }}:${{ secrets.HOSTING_PATH_TEST }}
+              sshpass -p '${{ secrets.HOSTING_PWD }}' rsync --exclude '*.md' --exclude '*.md' --exclude '.git' --exclude '.github' -r ./ ${{ secrets.HOSTING_USER }}@${{ secrets.HOSTING_IP }}:${{ secrets.HOSTING_PATH }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
 
