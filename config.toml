@@ -1,0 +1,19 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Urban Outdoorsy"
+disableKinds = []
+
+theme = "ananke"
+
+[outputs]
+home = ["HTML", "RSS"]
+posts = ["HTML", "RSS"]
+
+[params]
+  showReadingTime = true
+  showToc = true
+  disableBreadcrumb = true
+
+  [params.homeInfoParams]
+    enable = true
+

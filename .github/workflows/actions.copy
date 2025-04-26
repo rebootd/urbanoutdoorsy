@@ -1,10 +1,13 @@
-name: UrbanOutdoorsy CI/CD 
+name: CSInc CI/CD 
 run-name: ${{ github.actor }} pushed changes 🚀
 on: 
   push:
     branches:
       - master
       - 'releases/**'
+
+  workflow_dispatch:
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -12,6 +15,9 @@ jobs:
       # Step 1 - Checks-out your repository
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0 
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
 
       # Step 2 - Sets up Hugo
@@ -43,3 +49,4 @@ jobs:
           cd public
           sshpass -p '${{ secrets.HOSTING_PWD }}' rsync --exclude '*.md' --exclude '.git' --exclude '.github' -r ./ ${{ secrets.HOSTING_USER }}@${{ secrets.HOSTING_IP }}:${{ secrets.HOSTING_PATH }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
