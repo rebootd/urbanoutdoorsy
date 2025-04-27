@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>{{ .Title }}</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/toastr.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/toastr.min.css" />
+    <script>
+        const baseURL = "{{ .Site.BaseURL }}";
+    </script>
 </head>
 <body class="is-preload">
 <!-- Header -->
@@ -14,6 +17,14 @@
         <p>A place for outdoorsy people living the urban life.<br />
         Ideas, discussion, and real talk. Check back soon.</p>
     </header>
+    
+    <nav>
+        <ul>
+            {{ range .Site.Menus.main }}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+        </ul>
+    </nav>
     
     <main>
         {{ block "main" . }}{{ end }}
@@ -24,9 +35,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script src="https:////code.jquery.com/jquery.min.js"></script>
-    <script src="assets/js/toastr.min.js"></script>
+    <script src="/js/toastr.min.js"></script>
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
     <script type="text/javascript">
     (function(){	

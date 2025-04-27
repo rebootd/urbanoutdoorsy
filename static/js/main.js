@@ -36,9 +36,9 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'images/bg01.jpg': 'center',
-							'images/bg02.jpg': 'center',
-							'images/bg03.jpg': 'center'
+							'/images/bg01.jpg': 'center',
+							'/images/bg02.jpg': 'center',
+							'/images/bg03.jpg': 'center'
 						},
 
 					// Delay.
@@ -55,18 +55,21 @@
 				$wrapper = document.createElement('div');
 					$wrapper.id = 'bg';
 					$body.appendChild($wrapper);
-
-				for (k in settings.images) {
-
-					// Create BG.
+				
+				// Ensure settings.images is defined and is an object
+				if (settings.images && typeof settings.images === 'object') {
+					for (k in settings.images) {
+						// Create BG.
 						$bg = document.createElement('div');
-							$bg.style.backgroundImage = 'url("' + k + '")';
-							$bg.style.backgroundPosition = settings.images[k];
-							$wrapper.appendChild($bg);
+						$bg.style.backgroundImage = 'url("' + k + '")';
+						$bg.style.backgroundPosition = settings.images[k];
+						$wrapper.appendChild($bg);
 
-					// Add it to array.
+						// Add it to array.
 						$bgs.push($bg);
-
+					}
+				} else {
+					console.error("settings.images is not defined or is not an object");
 				}
 
 			// Main loop.
@@ -108,11 +111,11 @@
 				var $form = document.querySelectorAll('#signup-form')[0],
 					$submit = document.querySelectorAll('#signup-form input[type="submit"]')[0],
 					$message;
-
+				
 			// Bail if addEventListener isn't supported.
-				if (!('addEventListener' in $form))
+				if (!$form || !('addEventListener' in $form))
 					return;
-
+				
 			// Message.
 				$message = document.createElement('span');
 					$message.classList.add('message');

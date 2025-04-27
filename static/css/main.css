@@ -885,3 +885,53 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+
+/* Navigation */
+body nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  z-index: 10; /* Ensure it appears above other elements */
+}
+
+body nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+body nav ul li {
+  display: inline;
+}
+
+body nav ul li a {
+  text-decoration: none;
+  color: #fff; /* White font */
+  font-weight: bold;
+}
+
+body nav ul li a:hover {
+  color: #1cb495; /* Optional hover color */
+}
+
+/* Style for the post list */
+.post-list {
+  list-style: none; /* Removes bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.post-list li {
+  display: flex; /* Align date and title horizontally */
+  align-items: center;
+  margin-bottom: 1rem; /* Adds spacing between list items */
+}
+
+.post-list .post-date {
+  margin-right: 1rem; /* Adds spacing between the date and title */
+  color: #888; /* Gray color for the date */
+  font-size: 0.9rem; /* Slightly smaller font size for the date */
+}

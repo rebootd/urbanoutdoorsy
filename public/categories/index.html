@@ -2,30 +2,117 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>Categories</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/toastr.min.css" />
+    <script>
+        const baseURL = "http:\/\/localhost:1313\/";
+    </script>
 </head>
-<body>
-    <header>
+<body class="is-preload">
+
+    <header id="header">
         <h1>Urban Outdoorsy</h1>
+        <p>A place for outdoorsy people living the urban life.<br />
+        Ideas, discussion, and real talk. Check back soon.</p>
     </header>
+    
+    <nav>
+        <ul>
+            
+                <li><a href="/">Home</a></li>
+            
+                <li><a href="/about/">About</a></li>
+            
+                <li><a href="/posts/">Posts</a></li>
+            
+        </ul>
+    </nav>
+    
     <main>
         
-    
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
-      
-    </div>
-  </article>
-  <div class="mw8 center">
-    <section class="ph4">
-      
-    </section>
-  </div>
+<section>
+    <h1>Posts</h1>
+    <ul>
+        
+    </ul>
+</section>
 
     </main>
+    
     <footer>
         <p>&copy; 2025 Urban Outdoorsy</p>
     </footer>
+
+    
+    <script src="/js/main.js"></script>
+    <script src="https:////code.jquery.com/jquery.min.js"></script>
+    <script src="/js/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){	
+        emailjs.init("user_VAna2OSKnYW439DBsdWbP");
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        $('#sendButton').on("click",function() {
+        clearErrors();
+        if ( isFormValid() ) {
+            sendContact();
+            toastr.success('Thank you');
+            clearnForm();
+        }
+        return false;
+        });
+    })();
+
+    function isFormValid() {
+    var isValid = true;
+    if($('#email').val().trim().length == 0) {
+        setError($('#email'));
+        isValid = false;
+    }
+    return isValid;
+    }
+
+    function sendContact() {
+    var template_params = {
+        "reply_to": $('#email').val()
+    }
+
+    var service_id = "default_service";
+    var template_id = "outdoorsy_contact";
+    emailjs.send(service_id, template_id, template_params);
+    }
+
+    function setError(element) {
+    $(element).addClass('error').css('border-color','red');
+    }
+
+    function clearErrors() {
+    $('.error').css('border-color','').removeClass('error)')
+    }
+
+    function clearnForm() {
+    $('#email').val('')
+    }
+    </script>
 </body>
 </html>
