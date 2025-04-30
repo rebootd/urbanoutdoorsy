@@ -17,3 +17,20 @@ posts = ["HTML", "RSS"]
   [params.homeInfoParams]
     enable = true
 
+[menu]
+
+  [[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+  [[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 2
+
+  [[menu.main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 3
+

@@ -885,3 +885,40 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+
+/* Navigation Menu */
+nav {
+    position: fixed; /* Fixes the menu to the top-left corner of the window */
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    z-index: 10; /* Ensures it appears above other elements */
+    background-color: rgba(0, 0, 0, 0.7); /* Optional: Add a semi-transparent background for better visibility */
+}
+
+nav ul {
+    list-style: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Make the menu horizontal */
+    gap: 1rem; /* Add spacing between menu items */
+}
+
+nav ul li {
+    display: inline; /* Ensure list items are inline */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline */
+    color: #fff; /* White font */
+    font-weight: bold; /* Bold text */
+}
+
+nav ul li a:hover {
+    color: #1cb495; /* Optional hover color */
+}
+
+/* Add spacing below the menu to prevent overlap with content */
+header {
+    padding-top: 4rem; /* Adjust this value to match the height of the menu */
+}
