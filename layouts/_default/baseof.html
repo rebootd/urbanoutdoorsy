@@ -4,93 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>{{ .Title }}</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/toastr.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <style>
+        /* Menu styling */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white; /* White font */
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: #1cb495; /* Optional hover color */
+        }
+    </style>
 </head>
 <body class="is-preload">
+<!-- Navigation Menu -->
+<nav>
+    <ul>
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+    </ul>
+</nav>
+
 <!-- Header -->
-    <header id="header">
-        <h1>Urban Outdoorsy</h1>
-        <p>A place for outdoorsy people living the urban life.<br />
-        Ideas, discussion, and real talk. Check back soon.</p>
-    </header>
-    
-    <main>
-        {{ block "main" . }}{{ end }}
-    </main>
-    
-    <footer>
-        <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
-    </footer>
+<header id="header">
+    <h1>Urban Outdoorsy</h1>
+    <p>A place for outdoorsy people living the urban life.<br />
+    Ideas, discussion, and real talk. Check back soon.</p>
+</header>
 
-    <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
-    <script src="https:////code.jquery.com/jquery.min.js"></script>
-    <script src="assets/js/toastr.min.js"></script>
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-    <script type="text/javascript">
-    (function(){	
-        emailjs.init("user_VAna2OSKnYW439DBsdWbP");
+<main>
+    {{ block "main" . }}{{ end }}
+</main>
 
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-center",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "3000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
+<footer>
+    <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
+</footer>
 
-        $('#sendButton').on("click",function() {
-        clearErrors();
-        if ( isFormValid() ) {
-            sendContact();
-            toastr.success('Thank you');
-            clearnForm();
-        }
-        return false;
-        });
-    })();
-
-    function isFormValid() {
-    var isValid = true;
-    if($('#email').val().trim().length == 0) {
-        setError($('#email'));
-        isValid = false;
-    }
-    return isValid;
-    }
-
-    function sendContact() {
-    var template_params = {
-        "reply_to": $('#email').val()
-    }
-
-    var service_id = "default_service";
-    var template_id = "outdoorsy_contact";
-    emailjs.send(service_id, template_id, template_params);
-    }
-
-    function setError(element) {
-    $(element).addClass('error').css('border-color','red');
-    }
-
-    function clearErrors() {
-    $('.error').css('border-color','').removeClass('error)')
-    }
-
-    function clearnForm() {
-    $('#email').val('')
-    }
-    </script>
+<!-- Scripts -->
+<script src="/js/main.js"></script>
+<script src="https:////code.jquery.com/jquery.min.js"></script>
 </body>
 </html>
