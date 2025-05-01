@@ -2,24 +2,76 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>Posts</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <style>
+         
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.7);  
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;  
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: #1cb495;  
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Urban Outdoorsy</h1>
-    </header>
-    <main>
+<body class="is-preload">
+
+<nav>
+    <ul>
         
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/about/">About</a></li>
+        
+        <li><a href="/posts/">Posts</a></li>
+        
+    </ul>
+</nav>
+
+
+<header id="header">
+    <h1>Urban Outdoorsy</h1>
+    <p>A place for outdoorsy people living the urban life.<br />
+    Ideas, discussion, and real talk. Check back soon.</p>
+</header>
+
+<main>
+    
   <article class="pa3 pa4-ns nested-copy-line-height">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
     <section class="flex-ns mt5 flex-wrap justify-around">
       
     </section></article>
 
-    </main>
-    <footer>
-        <p>&copy; 2025 Urban Outdoorsy</p>
-    </footer>
+</main>
+
+<footer>
+    <p>&copy; 2025 Urban Outdoorsy</p>
+</footer>
+
+
+<script src="/js/main.js"></script>
+<script src="https:////code.jquery.com/jquery.min.js"></script>
 </body>
 </html>
