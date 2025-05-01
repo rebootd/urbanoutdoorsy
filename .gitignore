@@ -6,4 +6,5 @@ Gemfile.lock
 *.log
 log/
 tmp/
-
+.*.lock
+public/**

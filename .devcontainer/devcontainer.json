@@ -1,0 +1,13 @@
+{
+  "name": "Hugo Development Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [1313],
+  "postCreateCommand": "hugo version",
+  "customizations": {
+    "vscode": {
+      "extensions": ["bierner.markdown-preview-github-styles"]
+    }
+  }
+}
